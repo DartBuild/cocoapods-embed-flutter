@@ -1,1 +1,1 @@
-require 'cocoapods-embed-flutter/command'
+require 'cocoapods-embed-flutter'
