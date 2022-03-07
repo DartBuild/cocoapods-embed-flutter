@@ -2,6 +2,8 @@ PATH
   remote: ../..
   specs:
     cocoapods-embed-flutter (0.0.1)
+      cocoapods
+      fileutils
       yaml
 
 GEM
@@ -65,6 +67,7 @@ GEM
     ethon (0.15.0)
       ffi (>= 1.15.0)
     ffi (1.15.5)
+    fileutils (1.1.0)
     fourflusher (2.3.1)
     fuzzy_match (2.0.4)
     gh_inspector (1.1.3)

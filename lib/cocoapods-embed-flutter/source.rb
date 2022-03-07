@@ -1,1 +1,1 @@
-require 'cocoapods-embed-flutter/src/flutter_module'
+require 'cocoapods-embed-flutter/src/pub'
