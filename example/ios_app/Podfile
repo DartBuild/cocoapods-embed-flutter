@@ -7,5 +7,5 @@ target 'ios_app' do
   use_frameworks!
 
   # Pods for ios_app
-  flutter_module 'flutter_module', :path => '../'
+  pub 'flutter_module', :path => '../'
 end
