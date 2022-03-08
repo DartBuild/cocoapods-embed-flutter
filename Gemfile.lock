@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cocoapods-embed-flutter (0.0.1)
+    cocoapods-embed-flutter (0.5.0)
       cocoapods
       fileutils
       yaml
