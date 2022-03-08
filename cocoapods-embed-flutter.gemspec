@@ -8,9 +8,12 @@ Gem::Specification.new do |spec|
   spec.version       = CocoapodsEmbedFlutter::VERSION
   spec.authors       = ['Soumya Ranjan Mahunt']
   spec.email         = ['devsoumyamahunt@gmail.com']
-  spec.description   = %q{Embed flutter plugins in iOS projects.}
-  spec.summary       = %q{Embed flutter plugins in iOS projects.}
-  spec.homepage      = 'https://github.com/soumyamahunt/cocoapods-embed-flutter'
+  spec.description   = %q{Embed flutter modules in iOS projects.}
+  spec.summary       = <<-DESC
+  Straight forward way of declaring flutter modules as dependency for targets,
+  just like cocoapods does with pods.
+                         DESC
+  spec.homepage      = 'https://github.com/DartBuild/cocoapods-embed-flutter'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
