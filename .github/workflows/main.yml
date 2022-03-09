@@ -1,0 +1,129 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '*.md'
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '*.md'
+
+env:
+  RUBY_VER: 2.6
+
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.check_version_bump.outputs.release_type != '' }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ env.RUBY_VER }}
+
+    - name: Install dependencies
+      run: |
+        bundle config deployment true
+        bundle install
+
+    - name: Test example app
+      run: bundle exec rake demo
+
+    - name: Run tests
+      run: bundle exec rake specs
+
+    - name: Check version bump
+      id: check_version_bump
+      uses: mathieudutour/github-tag-action@v6.0
+      with:
+        github_token: ${{ github.token }}
+        default_bump: false
+        dry_run: true
+
+  cd:
+    name: Build and Publish
+    if: github.event_name == 'push' && needs.ci.outputs.release
+    needs: ci
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '17'
+
+    - name: Setup action config
+      run: npm install
+      working-directory: .github/config
+
+    # - name: Conventional Changelog Action
+    #   id: conventional_changelog
+    #   uses: TriPSs/conventional-changelog-action@v3
+    #   with:
+    #     github-token: ${{ github.token }}
+    #     git-message: 'chore(CHANGELOG): update for {version}'
+    #     git-user-name: ${{ github.actor }}
+    #     git-user-email: devsoumyamahunt@gmail.com
+    #     skip-version-file: true
+    #     release-count: 0
+    #     pre-changelog-generation: '.github/config/pre_changelog_hook.js'
+    #     config-file-path: '.github/config/config.js'
+
+    # - name: Setup Ruby
+    #   if: steps.conventional_changelog.outputs.skipped == 'false'
+    #   uses: ruby/setup-ruby@v1
+    #   with:
+    #     ruby-version: ${{ env.RUBY_VER }}
+
+    # - name: Build gem
+    #   if: steps.conventional_changelog.outputs.skipped == 'false'
+    #   run: gem build *.gemspec
+
+    # - name: Publish to GitHub Package Registry
+    #   if: steps.conventional_changelog.outputs.skipped == 'false'
+    #   run: |
+    #     mkdir -p $HOME/.gem
+    #     touch $HOME/.gem/credentials
+    #     chmod 0600 $HOME/.gem/credentials
+    #     printf -- "---\n:github: Bearer ${GITHUB_TOKEN}\n" > $HOME/.gem/credentials
+    #     gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
+    #   env:
+    #     GITHUB_TOKEN: ${{ github.token }}
+    #     OWNER: ${{ github.actor }}
+
+    # - name: Publish to RubyGems
+    #   if: steps.conventional_changelog.outputs.skipped == 'false'
+    #   run: |
+    #     mkdir -p $HOME/.gem
+    #     touch $HOME/.gem/credentials
+    #     chmod 0600 $HOME/.gem/credentials
+    #     printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+    #     gem push *.gem
+    #   env:
+    #     GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_AUTH_TOKEN }}
+
+    # - name: Create GitHub Release
+    #   if: steps.conventional_changelog.outputs.skipped == 'false'
+    #   uses: ncipollo/release-action@v1
+    #   with:
+    #     token: ${{ github.token }}
+    #     tag: ${{ steps.conventional_changelog.outputs.tag }}
+    #     body: ${{ steps.conventional_changelog.outputs.changelog }}
+    #     artifacts: '*.gem'
