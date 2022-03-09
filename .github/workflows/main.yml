@@ -20,7 +20,7 @@ concurrency:
 jobs:
   ci:
     name: Run Tests
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     outputs:
       release: ${{ steps.check_version_bump.outputs.release_type != '' }}
 
