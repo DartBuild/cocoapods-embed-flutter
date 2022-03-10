@@ -12,11 +12,11 @@ updates:
     schedule:
       interval: monthly
     commit-message:
-      prefix: 'ci(Dependency): '
+      prefix: 'ci(Deps): '
 
   - package-ecosystem: npm
     directory: .github/config
     schedule:
       interval: monthly
     commit-message:
-      prefix: 'ci(Dependency): '
+      prefix: 'ci(Deps): '
