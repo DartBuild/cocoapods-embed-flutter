@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cocoapods-embed-flutter/gem_version.rb'
 
 Gem::Specification.new do |spec|
-  spec.name          = CocoapodsEmbedFlutter::NAME
+  spec.name          = 'cocoapods-embed-flutter'
   spec.version       = CocoapodsEmbedFlutter::VERSION
   spec.authors       = ['Soumya Ranjan Mahunt']
   spec.email         = ['devsoumyamahunt@gmail.com']
