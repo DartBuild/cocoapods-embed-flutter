@@ -20,7 +20,7 @@ concurrency:
 jobs:
   ci:
     name: Run Tests
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     outputs:
       release: ${{ steps.check_version_bump.outputs.release_type != '' }}
 
@@ -38,11 +38,14 @@ jobs:
         bundle config deployment true
         bundle install
 
-    - name: Test example app
-      run: bundle exec rake demo
-
     - name: Run tests
       run: bundle exec rake specs
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2.3.0
+
+    - name: Test example app
+      run: bundle exec rake demo
 
     - name: Check version bump
       id: check_version_bump
