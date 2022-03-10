@@ -2,6 +2,7 @@ version: 2
 updates:
   - package-ecosystem: bundler
     directory: /
+    insecure-external-code-execution: allow
     schedule:
       interval: weekly
     commit-message:
