@@ -8,6 +8,7 @@ module.exports = config({
         { type: 'perf', section: '🐎 Performance Improvements' },
         { type: 'revert', section: '⏪ Reverts' },
         { type: 'build', section: '🛠 Build System' },
+        { type: 'deps', section: '🛠 Dependency' },
         { type: 'ci', section: '💡 Continuous Integration' },
         { type: 'refactor', section: '🔥 Refactorings' },
         { type: 'doc', section: '📚 Documentation' },
