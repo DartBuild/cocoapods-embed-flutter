@@ -41,8 +41,12 @@ jobs:
     - name: Run tests
       run: bundle exec rake specs
 
-    - name: Setup Flutter
+    - name: Install Flutter
       uses: subosito/flutter-action@v2.3.0
+
+    - name: Setup Flutter for ios
+      run: |
+        flutter precache --ios
 
     - name: Test example app
       run: bundle exec rake demo
