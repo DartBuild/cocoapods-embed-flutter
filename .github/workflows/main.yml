@@ -99,6 +99,11 @@ jobs:
     #   with:
     #     ruby-version: ${{ env.RUBY_VER }}
 
+    # - name: Install dependencies
+    #   run: |
+    #     bundle config deployment true
+    #     bundle install
+
     # - name: Build gem
     #   if: steps.conventional_changelog.outputs.skipped == 'false'
     #   run: gem build *.gemspec
@@ -134,3 +139,7 @@ jobs:
     #     tag: ${{ steps.conventional_changelog.outputs.tag }}
     #     body: ${{ steps.conventional_changelog.outputs.changelog }}
     #     artifacts: '*.gem'
+
+    # - name: Publish to cocoapods plugins
+    #   if: steps.conventional_changelog.outputs.skipped == 'false'
+    #   run: bundle exec rake publish
