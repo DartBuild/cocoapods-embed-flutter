@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 'deps: '
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: 'ci(Dependency): '
+
+  - package-ecosystem: npm
+    directory: .github/config
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: 'ci(Dependency): '
