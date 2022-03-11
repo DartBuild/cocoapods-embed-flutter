@@ -1,4 +1,11 @@
-## 0.5.0 (2022-03-11)
+### [0.5.1](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.0...v0.5.1) (2022-03-11)
+
+
+### 📚 Documentation
+
+* add code documentation ([87c06fd](https://github.com/DartBuild/cocoapods-embed-flutter/commit/87c06fd45d3c63a94cda6ce3ae00a200f412bb2a))
+
+## [0.5.0](https://github.com/DartBuild/cocoapods-embed-flutter/compare/3358c2b251f51154010990b95b7eaa741049d707...v0.5.0) (2022-03-11)
 
 
 ### 🚀 Features
