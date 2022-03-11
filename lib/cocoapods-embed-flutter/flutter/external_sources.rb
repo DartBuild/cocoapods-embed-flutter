@@ -1,11 +1,16 @@
 # Similar to:
 # https://github.com/CocoaPods/CocoaPods/blob/master/lib/cocoapods/external_sources/abstract_external_source.rb
-require 'cocoapods-embed-flutter/flutter/downloader'
+require 'cocoapods-embed-flutter/flutter'
 require 'cocoapods'
 
 module Flutter
   module Pub
+    # The ExternalSources modules name-spaces all the classes
+    # for accessing remote Flutter projects.
+    #
     module ExternalSources
+      # The keys accepted by the hash of the source attribute.
+      #
       SOURCE_KEYS = {
         :git  => [:tag, :branch, :commit, :submodules].freeze,
         :svn  => [:folder, :tag, :revision].freeze,
@@ -97,11 +102,9 @@ module Flutter
 
         public
 
-        # @!group Subclasses hooks
-
         # Fetches the external source from the remote according to the params.
         #
-        # @param  [Sandbox] sandbox
+        # @param  [Pod::Sandbox] sandbox
         #         the sandbox where the specification should be stored.
         #
         # @return [void]
@@ -138,6 +141,12 @@ module Flutter
           Spec.find_file(name, declared_path)
         end
 
+        # Return the normalized path for a pubspec assuming sandbox
+        # pod folder as location.
+        #
+        # @return [String] The uri of the pubspec appending the name of the file
+        #         and expanding it if necessary.
+        #
         def normalized_pupspec_path
           Spec.find_file(name, target)
         end
@@ -146,20 +155,23 @@ module Flutter
 
         # @! Subclasses helpers
 
-        # Pre-downloads a Pod passing the options to the downloader and informing
-        # the sandbox.
+        # Pre-downloads a flutter project passing the options to the downloader
+        # and informing the sandbox.
         #
-        # @param  [Sandbox] sandbox
-        #         The sandbox where the Pod should be downloaded.
+        # @param  [Pod::Sandbox] sandbox
+        #         The sandbox where the flutter project should be downloaded.
         #
-        # @note   To prevent a double download of the repository the pod is
-        #         marked as pre-downloaded indicating to the installer that only
+        # @note   To prevent a double download of the repository the flutter project
+        #         is marked as pre-downloaded indicating to the installer that only
         #         clean operations are needed.
         #
         # @todo  The downloader configuration is the same of the
-        #        #{PodSourceInstaller} and it needs to be kept in sync.
+        #        #{Pod::Installer::PodSourceInstaller}
+        #        and it needs to be kept in sync.
         #
         # @return [void]
+        #
+        # @todo   Implement caching for remote sources.
         #
         def pre_download(sandbox)
           title = "Pre-downloading: `#{name}` #{description}"
@@ -185,6 +197,9 @@ module Flutter
           end
         end
 
+        # @return [Pod::Downloader::Request] the request to remote
+        #         flutter project source.
+        #
         def download_request
           Pod::Downloader::Request.new(
             :name => name,
@@ -192,6 +207,9 @@ module Flutter
           )
         end
 
+        # @return [String] the path where this flutter project
+        #         will be downloaded relative paths.
+        #
         def target
           return Pod::Config.instance.sandbox.pod_dir(name)
         end

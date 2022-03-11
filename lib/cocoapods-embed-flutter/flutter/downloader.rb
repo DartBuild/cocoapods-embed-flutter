@@ -9,17 +9,16 @@ module Flutter
       # @return [Response] The download response for this download.
       #
       # @param  [Request] request
-      #         the request that describes this pod download.
+      #         the request that describes the flutter project download.
       #
       # @param  [Pathname,Nil] target
-      #         the location to which this pod should be downloaded. If `nil`,
-      #         then the pod will only be cached.
+      #         the location to which the flutter project should be downloaded.
       #
       # @param  [Boolean] can_cache
       #         whether caching is allowed.
       #
       # @param  [Pathname,Nil] cache_path
-      #         the path used to cache pod downloads.
+      #         the path used to cache flutter project downloads.
       #
       # @todo   Implement caching for remote sources.
       #

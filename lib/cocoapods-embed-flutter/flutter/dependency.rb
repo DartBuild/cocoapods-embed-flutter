@@ -1,4 +1,4 @@
-require 'cocoapods-embed-flutter/flutter/pubspec'
+require 'cocoapods-embed-flutter/flutter'
 
 module Flutter
   module Pub
@@ -76,7 +76,7 @@ module Flutter
 
       # Install this dependency for the parent project.
       #
-      # @return void
+      # @return [void]
       #
       def install
         spec.setup if local?

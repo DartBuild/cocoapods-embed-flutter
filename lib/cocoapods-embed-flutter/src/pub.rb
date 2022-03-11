@@ -1,8 +1,18 @@
 require 'cocoapods-embed-flutter/gem_version'
-require 'cocoapods-embed-flutter/flutter/pubspec'
-require 'cocoapods-embed-flutter/flutter/external_sources'
+require 'cocoapods-embed-flutter/flutter'
 
+# The Pod modules name-spaces all the classes and methods
+# providing flutter specific functionality to podfile.
+#
 module Pod
+  # The Podfile is a specification that describes the dependencies of the
+  # targets of an Xcode project.
+  #
+  # It supports its own DSL and is stored in a file named `Podfile`.
+  #
+  # The Podfile creates a hierarchy of target definitions that store the
+  # information necessary to generate the CocoaPods libraries.
+  #
   class Podfile
     # The Podfile is a specification that describes the dependencies of the
     # targets of one or more Xcode projects. With Embed Flutter
@@ -104,6 +114,14 @@ module Pod
         install_flutter_pods_for_pubspec(pubspec)
       end
 
+      # Integrates flutter module provided in `pubspec`
+      # to an Xcode project target.
+      #
+      # @param  [Flutter::Pub::Spec] pubspec
+      #         the flutter module project specification.
+      #
+      # @return [void]
+      #
       def install_flutter_pods_for_pubspec(pubspec)
         raise ArgumentError, "Invalid `pubspec` argument." unless pubspec.is_a?(Flutter::Pub::Spec)
         load pubspec.pod_helper_path

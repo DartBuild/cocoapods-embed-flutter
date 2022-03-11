@@ -1,15 +1,8 @@
-require 'cocoapods-embed-flutter/flutter/dependency'
+require 'cocoapods-embed-flutter/flutter'
 require 'yaml'
 
 module Flutter
-  NAME = 'flutter'.freeze
-  DIR_NAME = 'Flutter'.freeze
-
   module Pub
-    SPEC_FILE = 'pubspec.yaml'.freeze
-    TOOL_DIR = '.dart_tool'.freeze
-    CACHE_FILE = 'package_config.json'.freeze
-
     # The Specification provides a DSL to describe a flutter project.
     # A project is defined as a library originating from a source.
     # A specification can support detailed attributes for modules of code
@@ -139,7 +132,7 @@ module Flutter
 
       # Sets up the project installing all specified dependencies.
       #
-      # @return void
+      # @return [void]
       #
       def setup
         return if setup?
@@ -149,7 +142,7 @@ module Flutter
 
       # Runs `flutter pub get` on project directory.
       #
-      # @return void
+      # @return [void]
       #
       def pup_get
         Dir.chdir(project_path) { |path| system('flutter pub get', exception: true) }
