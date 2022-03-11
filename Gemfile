@@ -6,10 +6,10 @@ gemspec
 group :development do
   gem 'cocoapods'
   gem 'cocoapods-plugins'
+  gem 'github_api'
 
   gem 'mocha'
   gem 'bacon'
   gem 'mocha-on-bacon'
   gem 'prettybacon'
-  gem 'github_api'
 end
