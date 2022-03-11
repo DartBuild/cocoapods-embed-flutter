@@ -80,66 +80,66 @@ jobs:
       run: npm install
       working-directory: .github/config
 
-    # - name: Conventional Changelog Action
-    #   id: conventional_changelog
-    #   uses: TriPSs/conventional-changelog-action@v3
-    #   with:
-    #     github-token: ${{ github.token }}
-    #     git-message: 'chore(CHANGELOG): update for {version}'
-    #     git-user-name: ${{ github.actor }}
-    #     git-user-email: devsoumyamahunt@gmail.com
-    #     skip-version-file: true
-    #     release-count: 0
-    #     pre-changelog-generation: '.github/config/pre_changelog_hook.js'
-    #     config-file-path: '.github/config/config.js'
+    - name: Conventional Changelog Action
+      id: conventional_changelog
+      uses: TriPSs/conventional-changelog-action@v3
+      with:
+        github-token: ${{ github.token }}
+        git-message: 'chore(CHANGELOG): update for {version}'
+        git-user-name: ${{ github.actor }}
+        git-user-email: devsoumyamahunt@gmail.com
+        skip-version-file: true
+        release-count: 0
+        pre-changelog-generation: '.github/config/pre_changelog_hook.js'
+        config-file-path: '.github/config/config.js'
 
-    # - name: Setup Ruby
-    #   if: steps.conventional_changelog.outputs.skipped == 'false'
-    #   uses: ruby/setup-ruby@v1
-    #   with:
-    #     ruby-version: ${{ env.RUBY_VER }}
+    - name: Setup Ruby
+      if: steps.conventional_changelog.outputs.skipped == 'false'
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ env.RUBY_VER }}
 
-    # - name: Install dependencies
-    #   run: |
-    #     bundle config deployment true
-    #     bundle install
+    - name: Install dependencies
+      run: |
+        bundle config deployment true
+        bundle install
 
-    # - name: Build gem
-    #   if: steps.conventional_changelog.outputs.skipped == 'false'
-    #   run: gem build *.gemspec
+    - name: Build gem
+      if: steps.conventional_changelog.outputs.skipped == 'false'
+      run: gem build *.gemspec
 
-    # - name: Publish to GitHub Package Registry
-    #   if: steps.conventional_changelog.outputs.skipped == 'false'
-    #   run: |
-    #     mkdir -p $HOME/.gem
-    #     touch $HOME/.gem/credentials
-    #     chmod 0600 $HOME/.gem/credentials
-    #     printf -- "---\n:github: Bearer ${GITHUB_TOKEN}\n" > $HOME/.gem/credentials
-    #     gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
-    #   env:
-    #     GITHUB_TOKEN: ${{ github.token }}
-    #     OWNER: ${{ github.actor }}
+    - name: Publish to GitHub Package Registry
+      if: steps.conventional_changelog.outputs.skipped == 'false'
+      run: |
+        mkdir -p $HOME/.gem
+        touch $HOME/.gem/credentials
+        chmod 0600 $HOME/.gem/credentials
+        printf -- "---\n:github: Bearer ${GITHUB_TOKEN}\n" > $HOME/.gem/credentials
+        gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        OWNER: ${{ github.actor }}
 
-    # - name: Publish to RubyGems
-    #   if: steps.conventional_changelog.outputs.skipped == 'false'
-    #   run: |
-    #     mkdir -p $HOME/.gem
-    #     touch $HOME/.gem/credentials
-    #     chmod 0600 $HOME/.gem/credentials
-    #     printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-    #     gem push *.gem
-    #   env:
-    #     GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_AUTH_TOKEN }}
+    - name: Publish to RubyGems
+      if: steps.conventional_changelog.outputs.skipped == 'false'
+      run: |
+        mkdir -p $HOME/.gem
+        touch $HOME/.gem/credentials
+        chmod 0600 $HOME/.gem/credentials
+        printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+        gem push *.gem
+      env:
+        GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_AUTH_TOKEN }}
 
-    # - name: Create GitHub Release
-    #   if: steps.conventional_changelog.outputs.skipped == 'false'
-    #   uses: ncipollo/release-action@v1
-    #   with:
-    #     token: ${{ github.token }}
-    #     tag: ${{ steps.conventional_changelog.outputs.tag }}
-    #     body: ${{ steps.conventional_changelog.outputs.changelog }}
-    #     artifacts: '*.gem'
+    - name: Create GitHub Release
+      if: steps.conventional_changelog.outputs.skipped == 'false'
+      uses: ncipollo/release-action@v1
+      with:
+        token: ${{ github.token }}
+        tag: ${{ steps.conventional_changelog.outputs.tag }}
+        body: ${{ steps.conventional_changelog.outputs.changelog }}
+        artifacts: '*.gem'
 
-    # - name: Publish to cocoapods plugins
-    #   if: steps.conventional_changelog.outputs.skipped == 'false'
-    #   run: bundle exec rake publish
+    - name: Publish to cocoapods plugins
+      if: steps.conventional_changelog.outputs.skipped == 'false'
+      run: bundle exec rake publish
