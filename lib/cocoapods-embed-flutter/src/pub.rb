@@ -4,7 +4,99 @@ require 'cocoapods-embed-flutter/flutter/external_sources'
 
 module Pod
   class Podfile
+    # The Podfile is a specification that describes the dependencies of the
+    # targets of one or more Xcode projects. With Embed Flutter
+    # it is possible to declare flutter module as dependency
+    #
+    # A Podfile can be very simple:
+    #
+    #     target 'MyApp'
+    #     pub 'flutter_module', :path => '../'
+    #
+    # An example of a more complex Podfile can be:
+    #
+    #     platform :ios, '9.0'
+    #     inhibit_all_warnings!
+    #
+    #     target 'MyApp' do
+    #       pub 'flutter_module', :path => '../'
+    #     end
+    #
+    #     target 'MyAppTests' do
+    #       pub 'flutter_module_test', :path => '../'
+    #     end
+    #
+    #     post_install do |installer|
+    #       installer.pods_project.targets.each do |target|
+    #         puts "#{target.name}"
+    #       end
+    #     end
+    #
+    #
+    # @note       Currently only one flutter module per target is
+    #             supported.
+    #
     module DSL
+      # Specifies a flutter module dependency of the project.
+      #
+      # A dependency requirement is defined by the name of the module and
+      # optionally a list of requirements.
+      #
+      #
+      # ### Using the files from a local path.
+      #
+      #  If you would like to use develop a flutter module in tandem with
+      #  its client project you can use the `path` option.
+      #
+      #     pub 'flutter_module', :path => '../'
+      #
+      #  Using this option Embed Flutter will assume the given folder
+      #  to be the root of the flutter module or the root of flutter module `pubspec` file
+      #  or points to the `pubspec` file itself and will link the files directly from there
+      #  in the Pods project. This means that your edits will persist to
+      #  CocoaPods installations.
+      #
+      #  The referenced folder can be a checkout of your your favourite SCM or
+      #  even a git submodule of the current repository.
+      #
+      #  Note that either the flutter module or the `pubspec` of the flutter module
+      #  can be in the folder. Optionally you can provide the `pubspec` file directly.
+      #
+      #
+      # ### From a flutter module in the root of a library repository.
+      #
+      # Sometimes you may want to use the bleeding edge version of a module. Or a
+      # specific revision. If this is the case, you can specify that with your
+      # pub declaration.
+      #
+      # To use the `master` or `main` branch of the repository:
+      #
+      #     pub 'flutter_module', :git => 'https://github.com/octokit/flutter_module.git'
+      #
+      #
+      # To use a different branch of the repository:
+      #
+      #     pub 'flutter_module', :git => 'https://github.com/octokit/flutter_module.git', :branch => 'dev'
+      #
+      #
+      # To use a tag of the repository:
+      #
+      #     pub 'flutter_module', :git => 'https://github.com/octokit/flutter_module.git', :tag => '0.7.0'
+      #
+      #
+      # Or specify a commit:
+      #
+      #     pub 'flutter_module', :git => 'https://github.com/octokit/flutter_module.git', :commit => '082f8319af'
+      #
+      # The flutter module or its `pubspec` file is expected to be in the
+      # root of the repository.
+      #
+      #
+      # @note       This method allow a nil name and the raises to be more
+      #             informative.
+      #
+      # @return     [void]
+      #
       def pub(name = nil, *requirements)
         pubspec = Flutter::Pub::ExternalSources.fetchWithNameAndOptions(name, requirements)
         pubspec.setup
