@@ -81,6 +81,16 @@ jobs:
       run: npm install
       working-directory: .github/config
 
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ env.RUBY_VER }}
+
+    - name: Install dependencies
+      run: |
+        bundle config deployment true
+        bundle install
+
     - name: Conventional Changelog Action
       id: conventional_changelog
       uses: TriPSs/conventional-changelog-action@v3
@@ -93,18 +103,6 @@ jobs:
         release-count: 0
         pre-changelog-generation: '.github/config/pre_changelog_hook.js'
         config-file-path: '.github/config/config.js'
-
-    - name: Setup Ruby
-      if: steps.conventional_changelog.outputs.skipped == 'false'
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ env.RUBY_VER }}
-
-    - name: Install dependencies
-      if: steps.conventional_changelog.outputs.skipped == 'false'
-      run: |
-        bundle config deployment true
-        bundle install
 
     - name: Build gem
       if: steps.conventional_changelog.outputs.skipped == 'false'
