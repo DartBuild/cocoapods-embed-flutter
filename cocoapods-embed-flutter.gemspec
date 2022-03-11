@@ -4,6 +4,9 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cocoapods-embed-flutter/gem_version.rb'
 
 Gem::Specification.new do |spec|
+  repo = 'DartBuild/cocoapods-embed-flutter'
+  repo_url = "https://github.com/#{repo}"
+
   spec.name          = 'cocoapods-embed-flutter'
   spec.version       = CocoapodsEmbedFlutter::VERSION
   spec.authors       = ['Soumya Ranjan Mahunt']
@@ -13,7 +16,7 @@ Gem::Specification.new do |spec|
   Straight forward way of declaring flutter modules as dependency for targets,
   just like cocoapods does with pods.
                          DESC
-  spec.homepage      = 'https://github.com/DartBuild/cocoapods-embed-flutter'
+  spec.homepage      = repo_url
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
@@ -27,4 +30,11 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
+
+  spec.metadata = {
+    'bug_tracker_uri'   => "#{repo_url}/issues",
+    'changelog_uri'     => "#{repo_url}/blob/main/CHANGELOG.md",
+    'source_code_uri'   => repo_url,
+    'github_repo'       => "git@github.com:#{repo}.git"
+  }
 end
