@@ -9,6 +9,7 @@ on:
     branches: [ main ]
     paths-ignore:
       - '*.md'
+  workflow_dispatch:
 
 env:
   RUBY_VER: 2.6
@@ -61,7 +62,7 @@ jobs:
 
   cd:
     name: Build and Publish
-    if: github.event_name == 'push' && needs.ci.outputs.release
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && needs.ci.outputs.release
     needs: ci
     runs-on: ubuntu-latest
 
@@ -100,6 +101,7 @@ jobs:
         ruby-version: ${{ env.RUBY_VER }}
 
     - name: Install dependencies
+      if: steps.conventional_changelog.outputs.skipped == 'false'
       run: |
         bundle config deployment true
         bundle install
