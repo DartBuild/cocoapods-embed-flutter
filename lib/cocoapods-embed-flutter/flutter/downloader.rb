@@ -21,6 +21,8 @@ module Flutter
       # @param  [Pathname,Nil] cache_path
       #         the path used to cache pod downloads.
       #
+      # @todo   Implement caching for remote sources.
+      #
       def self.download(
         request,
         target,

@@ -13,6 +13,20 @@ module Flutter
         :http => [:flatten, :type, :sha256, :sha1, :headers].freeze,
       }.freeze
 
+      # Returns the path to `pubspec` with the given name and location to search.
+      #
+      # @param    [String] name
+      #           the name of the project declared in `pubspec`.
+      #
+      # @param    [Hash] options
+      #           requirement opttions for the source of project.
+      #
+      # @note       the source of project can either be local or all the remotes
+      #             supported by `cocoapods-downloader`.
+      #
+      # @return   [Spec] the `pubspec` with the given name satisfying
+      #           requirement options.
+      #
       def self.fetchWithNameAndOptions(name, options)
         raise StandardError, 'A flutter module requires a name.' unless name
 
