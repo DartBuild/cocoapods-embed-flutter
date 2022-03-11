@@ -1,7 +1,7 @@
 # cocoapods-embed-flutter
 
 [![Gem Version](https://badge.fury.io/rb/cocoapods-embed-flutter.svg)](http://badge.fury.io/rb/cocoapods-embed-flutter)
-[![Code Climate](https://codeclimate.com/github/DartBuild/cocoapods-embed-flutter.png)](https://codeclimate.com/github/DartBuild/cocoapods-embed-flutter)
+<!--- [![Code Climate](https://codeclimate.com/github/DartBuild/cocoapods-embed-flutter.png)](https://codeclimate.com/github/DartBuild/cocoapods-embed-flutter) -->
 
 Straight forward way of declaring flutter modules as dependency for targets, just like cocoapods does with pods.
 
