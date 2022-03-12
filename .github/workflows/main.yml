@@ -67,7 +67,7 @@ jobs:
 
   cd:
     name: Build and Publish
-    if: (github.event_name == 'push' && needs.ci.outputs.release) || (github.event_name == 'workflow_dispatch' && github.event.inputs.release)
+    if: (github.event_name == 'push' && needs.ci.outputs.release == 'true') || (github.event_name == 'workflow_dispatch' && github.event.inputs.release == 'true')
     needs: ci
     runs-on: ubuntu-latest
 
