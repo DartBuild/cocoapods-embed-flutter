@@ -1,3 +1,16 @@
+### [0.5.2](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.1...v0.5.2) (2022-03-12)
+
+
+### 📚 Documentation
+
+* add helpful links and badges ([4ab6983](https://github.com/DartBuild/cocoapods-embed-flutter/commit/4ab69837d5057a0049e1533a00c6209556aec5b0))
+
+
+### 💡 Continuous Integration
+
+* **Deps:** bump actions/checkout from 2 to 3 ([#2](https://github.com/DartBuild/cocoapods-embed-flutter/issues/2)) ([3d1ca07](https://github.com/DartBuild/cocoapods-embed-flutter/commit/3d1ca0732a87e04561bc68ba1bbfc337173cd783))
+* **Deps:** bump actions/setup-node from 2 to 3 ([#3](https://github.com/DartBuild/cocoapods-embed-flutter/issues/3)) ([efd8f1a](https://github.com/DartBuild/cocoapods-embed-flutter/commit/efd8f1a82ce8ca6cd12adc1e5ca943a316a44b03))
+
 ### [0.5.1](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.0...v0.5.1) (2022-03-11)
 
 
