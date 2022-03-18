@@ -11,6 +11,8 @@ end
 
 desc 'Setup example project'
 task :demo do
+  deployment = Bundler.settings['DEPLOYMENT'] || false
+  Bundler.settings.set_local('DEPLOYMENT', false) if deployment
   system('bundle install', exception: true)
   Bundler.with_unbundled_env do
     Dir.chdir('example/ios_app') do |path|
@@ -18,6 +20,7 @@ task :demo do
       system('bundle exec pod install', exception: true)
     end
   end
+  Bundler.settings.set_local('DEPLOYMENT', deployment) if deployment
 end
 
 desc 'Publish to cocoapods plugins if not present'
