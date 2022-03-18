@@ -9,28 +9,29 @@ Gem::Specification.new do |spec|
 
   spec.name          = 'cocoapods-embed-flutter'
   spec.version       = CocoapodsEmbedFlutter::VERSION
-  spec.authors       = ['Soumya Ranjan Mahunt']
-  spec.email         = ['devsoumyamahunt@gmail.com']
-  spec.description   = %q{Embed flutter modules in iOS projects.}
-  spec.summary       = <<-DESC
-  Straight forward way of declaring flutter modules as dependency for targets,
-  just like cocoapods does with pods.
-                         DESC
   spec.homepage      = repo_url
   spec.license       = 'MIT'
+  spec.authors       = ['Soumya Ranjan Mahunt']
+  spec.email         = ['devsoumyamahunt@gmail.com']
+  spec.summary       = %q{Embed flutter modules in iOS projects.}
+  spec.description   = <<-EOF
+    Straight forward way of declaring flutter modules as dependency for targets,
+    just like cocoapods does with pods.
+  EOF
 
-  spec.files         = `git ls-files`.split($/)
+  spec.files         = `git ls-files`.split($/).grep_v(%r{^(example|.github)/})
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'yaml'
-  spec.add_dependency 'fileutils'
-  spec.add_dependency 'cocoapods'
+  spec.add_runtime_dependency 'yaml'
+  spec.add_runtime_dependency 'fileutils'
+  spec.add_runtime_dependency 'cocoapods'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
 
+  spec.required_ruby_version = '>= 2.6'
   spec.metadata = {
     'bug_tracker_uri'   => "#{repo_url}/issues",
     'changelog_uri'     => "#{repo_url}/blob/main/CHANGELOG.md",

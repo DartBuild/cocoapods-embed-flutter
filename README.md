@@ -40,6 +40,11 @@ pub 'flutter_module', :git => 'https://github.com/gowalla/flutter_module.git', :
 pub 'flutter_module', :git => 'https://github.com/gowalla/flutter_module.git', :commit => '082f8319af'
 ```
 
+## Limitations
+
+- You won't be able to add more than one flutter module to a single target. Currently flutter only supports one module per target.
+- No caching is done for external sources, every time you run `pod install` flutter module will be downloaded each time.
+
 ## Links
 
 | Link | Description |
