@@ -12,7 +12,7 @@ end
 desc 'Setup example project'
 task :demo do
   system('bundle install', exception: true)
-  Bundler.with_clean_env do
+  Bundler.with_unbundled_env do
     Dir.chdir('example/ios_app') do |path|
       system('bundle install', exception: true)
       system('bundle exec pod install', exception: true)

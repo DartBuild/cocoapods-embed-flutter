@@ -21,6 +21,9 @@ exports.preVersionGeneration = (version) => {
   const new_gem_info = gem_info.replace(/VERSION\s*=\s*.*/g, `VERSION = '${version}'.freeze`);
   core.info(`Updated gem info: ${new_gem_info}`);
   fs.writeFileSync(gem_info_file, new_gem_info);
+
+  const launchOption = { cwd: GITHUB_WORKSPACE };
+  childProcess.execSync('bundle exec rake demo', launchOption);
   return version;
 }
 
