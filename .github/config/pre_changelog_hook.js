@@ -22,7 +22,11 @@ exports.preVersionGeneration = (version) => {
   core.info(`Updated gem info: ${new_gem_info}`);
   fs.writeFileSync(gem_info_file, new_gem_info);
 
-  const launchOption = { cwd: GITHUB_WORKSPACE };
+  const launchOption = {
+    cwd: GITHUB_WORKSPACE,
+    env: Object.assign({}, process.env, { 'LANG': 'en_US.UTF-8' })
+  };
+
   childProcess.execSync('bundle config unset deployment', launchOption);
   childProcess.execSync('bundle install', launchOption);
   childProcess.execSync('bundle exec rake demo', launchOption);
