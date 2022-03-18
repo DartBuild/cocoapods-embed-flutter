@@ -20,6 +20,16 @@ task :demo do
   end
 end
 
+desc 'Update lock files'
+task :update do
+  system('bundle install', exception: true)
+  Bundler.with_unbundled_env do
+    Dir.chdir('example/ios_app') do |path|
+      system('bundle install', exception: true)
+    end
+  end
+end
+
 desc 'Publish to cocoapods plugins if not present'
 task :publish do
   require 'rubygems'
@@ -31,7 +41,9 @@ task :publish do
   return if known_plugins.one? { |plugin| plugin['gem'] == gem.name }
 
   require 'github_api'
-  return if Github.search.issues(q: "#{gem.name} user:CocoaPods repo:CocoaPods/cocoapods-plugins in:title").items.count > 0
+  return if Github.search.issues(
+    q: "#{gem.name} user:CocoaPods repo:CocoaPods/cocoapods-plugins in:title"
+  ).items.count > 0
   system('pod plugins publish', exception: true)
 end
 
