@@ -1,3 +1,10 @@
+### [0.5.3](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.2...v0.5.3) (2022-03-18)
+
+
+### 📚 Documentation
+
+* **README:** add limitations ([9133edc](https://github.com/DartBuild/cocoapods-embed-flutter/commit/9133edc006973892b2e55ef13a30f6ae8e8b7ad4))
+
 ### [0.5.2](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.1...v0.5.2) (2022-03-12)
 
 
