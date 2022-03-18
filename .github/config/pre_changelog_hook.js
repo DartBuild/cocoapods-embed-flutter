@@ -24,6 +24,7 @@ exports.preVersionGeneration = (version) => {
 
   const launchOption = { cwd: GITHUB_WORKSPACE };
   childProcess.execSync('bundle config unset deployment', launchOption);
+  childProcess.execSync('bundle install', launchOption);
   childProcess.execSync('bundle exec rake demo', launchOption);
   childProcess.execSync('bundle config deployment true', launchOption);
   return version;
