@@ -42,6 +42,7 @@ pub 'flutter_module', :git => 'https://github.com/gowalla/flutter_module.git', :
 
 ## Limitations
 
+- Modules hosted in [pub.dev](https://pub.dev/) are not supported, only local modules and modules in remote sources like git are supported.
 - You won't be able to add more than one flutter module to a single target. Currently flutter only supports one module per target.
 - No caching is done for external sources, every time you run `pod install` flutter module will be downloaded each time.
 
