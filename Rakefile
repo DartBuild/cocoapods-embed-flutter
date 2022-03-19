@@ -4,6 +4,16 @@ def specs(dir)
   FileList["spec/#{dir}/*_spec.rb"].shuffle.join(' ')
 end
 
+def setup_project(pod_install = false)
+  system('bundle install', exception: true)
+  Bundler.with_unbundled_env do
+    Dir.chdir('example/ios_app') do |path|
+      system('bundle install', exception: true)
+      system('bundle exec pod install', exception: true) if pod_install
+    end
+  end
+end
+
 desc 'Runs all the specs'
 task :specs do
   sh "bundle exec bacon #{specs('**')}"
@@ -11,23 +21,12 @@ end
 
 desc 'Setup example project'
 task :demo do
-  system('bundle install', exception: true)
-  Bundler.with_unbundled_env do
-    Dir.chdir('example/ios_app') do |path|
-      system('bundle install', exception: true)
-      system('bundle exec pod install', exception: true)
-    end
-  end
+  setup_project(true)
 end
 
 desc 'Update lock files'
 task :update do
-  system('bundle install', exception: true)
-  Bundler.with_unbundled_env do
-    Dir.chdir('example/ios_app') do |path|
-      system('bundle install', exception: true)
-    end
-  end
+  setup_project
 end
 
 desc 'Publish to cocoapods plugins if not present'
