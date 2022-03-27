@@ -38,12 +38,12 @@ module Flutter
         options = options.last if options.is_a?(Array)
         raise StandardError, "No options specified for flutter module: '#{name}'." unless options.is_a?(Hash)
 
-        if options.key?(:path)
-          path = options[:path]
-        elsif SOURCE_KEYS.keys.any? { |key| options.key?(key) }
+        if SOURCE_KEYS.keys.any? { |key| options.key?(key) }
           source = DownloaderSource.new(name, options, Pod::Config.instance.podfile_path)
           source.fetch(Pod::Config.instance.sandbox)
           path = source.normalized_pupspec_path
+        elsif options.key?(:path)
+          path = options[:path]
         else
           raise StandardError, "Invalid flutter module: '#{name}'."
         end
@@ -116,8 +116,8 @@ module Flutter
         # @return [String] a string representation of the source suitable for UI.
         #
         def description
-          strategy = Pod::Downloader.strategy_from_options(params)
-          options = params.dup
+          strategy = Pod::Downloader.strategy_from_options(download_params)
+          options = download_params.dup
           url = options.delete(strategy)
           result = "from `#{url}`"
           options.each do |key, value|
@@ -148,7 +148,8 @@ module Flutter
         #         and expanding it if necessary.
         #
         def normalized_pupspec_path
-          Spec.find_file(name, target)
+          search_path = params[:path].nil? ? target : File.expand_path(params[:path], target)
+          Spec.find_file(name, search_path)
         end
 
         private
@@ -203,8 +204,14 @@ module Flutter
         def download_request
           Pod::Downloader::Request.new(
             :name => name,
-            :params => params,
+            :params => download_params,
           )
+        end
+
+        # @return [Hash] the options for remote source download.
+        #
+        def download_params
+          params.select { |key, value| !key.equal?(:path) }
         end
 
         # @return [String] the path where this flutter project
