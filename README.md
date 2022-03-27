@@ -30,6 +30,7 @@ plugin 'cocoapods-embed-flutter'
 pub 'flutter_module', :path => '../'
 ```
 
+<a name="path_desc"></a>
 *`:path` can be path pointing to `pubspec.yaml` or to the directory containing `pubspec.yaml` or to the directory containg flutter module.*
 
 ### Embedding module from a repository.
@@ -38,6 +39,12 @@ pub 'flutter_module', :path => '../'
 pub 'flutter_module', :git => 'https://github.com/gowalla/flutter_module.git', :branch => 'dev'
 pub 'flutter_module', :git => 'https://github.com/gowalla/flutter_module.git', :tag => '0.7.0'
 pub 'flutter_module', :git => 'https://github.com/gowalla/flutter_module.git', :commit => '082f8319af'
+```
+
+*flutter module project should be at the root of repository, if that's not the case add additional `:path` attribute for relative path to flutter project in repository. `:path` follows [these](#path_desc) restictions.*
+
+```rb
+pub 'flutter_module', :git => 'https://github.com/gowalla/flutter_module.git', :tag => '0.7.0', :path => 'relative path/to/project'
 ```
 
 ## Limitations

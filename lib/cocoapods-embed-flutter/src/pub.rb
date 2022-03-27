@@ -99,7 +99,10 @@ module Pod
       #     pub 'flutter_module', :git => 'https://github.com/octokit/flutter_module.git', :commit => '082f8319af'
       #
       # The flutter module or its `pubspec` file is expected to be in the
-      # root of the repository.
+      # root of the repository, if that's not the case specify relative path
+      # to flutter project in repository.
+      #
+      #     pub 'flutter_module', :git => 'https://github.com/octokit/flutter_module.git', :tag => '0.7.0', :path => 'custom/flutter_module'
       #
       #
       # @note       This method allow a nil name and the raises to be more
