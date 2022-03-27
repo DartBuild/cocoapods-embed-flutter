@@ -1,3 +1,25 @@
+## [0.6.0](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.3...v0.6.0) (2022-03-27)
+
+
+### 📚 Documentation
+
+* **README:** add pub.dev limitation ([8f955f3](https://github.com/DartBuild/cocoapods-embed-flutter/commit/8f955f36519b1e5eeac89ffebd660a5f84f9983b))
+
+
+### 🛠 Dependency
+
+* bump cocoapods from 1.11.2 to 1.11.3 ([#4](https://github.com/DartBuild/cocoapods-embed-flutter/issues/4)) ([152737d](https://github.com/DartBuild/cocoapods-embed-flutter/commit/152737dd77852ef6937b5f458019e6535a426755))
+
+
+### 💄 Styles
+
+* add vscode extensions recommendation ([4f021fb](https://github.com/DartBuild/cocoapods-embed-flutter/commit/4f021fbfa75dd58d1257c43ea3d19cb68b8a19e6))
+
+
+### 🚀 Features
+
+* allow specifying different path for remote sources ([bc9c850](https://github.com/DartBuild/cocoapods-embed-flutter/commit/bc9c8509f90ef88248b56361794b6f8f1182a082))
+
 ### [0.5.3](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.2...v0.5.3) (2022-03-18)
 
 
