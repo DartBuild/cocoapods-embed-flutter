@@ -3,6 +3,7 @@
 [![CI/CD](https://github.com/DartBuild/cocoapods-embed-flutter/actions/workflows/main.yml/badge.svg?branch=main&event=push)](https://github.com/DartBuild/cocoapods-embed-flutter/actions/workflows/main.yml)
 [![Gem Version](https://badge.fury.io/rb/cocoapods-embed-flutter.svg)](http://badge.fury.io/rb/cocoapods-embed-flutter)
 [![Code Climate](https://codeclimate.com/github/DartBuild/cocoapods-embed-flutter.png)](https://codeclimate.com/github/DartBuild/cocoapods-embed-flutter)
+[![CodeQL](https://github.com/DartBuild/cocoapods-embed-flutter/actions/workflows/codeql-analysis.yml/badge.svg?event=push)](https://github.com/DartBuild/cocoapods-embed-flutter/actions/workflows/codeql-analysis.yml)
 
 Straight forward way of declaring flutter modules as dependency for targets, just like cocoapods does with pods.
 
