@@ -26,7 +26,10 @@ concurrency:
 jobs:
   ci:
     name: Run Tests
-    runs-on: [self-hosted]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, [self-hosted, macOS]]
     outputs:
       release: ${{ steps.check_version_bump.outputs.release_type != '' }}
 
