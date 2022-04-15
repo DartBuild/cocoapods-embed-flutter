@@ -26,7 +26,7 @@ concurrency:
 jobs:
   ci:
     name: Run Tests
-    runs-on: [self-hosted, ubuntu-latest]
+    runs-on: [self-hosted, macOS]
     outputs:
       release: ${{ steps.check_version_bump.outputs.release_type != '' }}
 
