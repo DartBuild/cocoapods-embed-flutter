@@ -1,4 +1,4 @@
-# cocoapods-embed-flutter
+# CocoaPods Embed Flutter
 
 [![CI/CD](https://github.com/DartBuild/cocoapods-embed-flutter/actions/workflows/main.yml/badge.svg?branch=main&event=push)](https://github.com/DartBuild/cocoapods-embed-flutter/actions/workflows/main.yml)
 [![Gem Version](https://badge.fury.io/rb/cocoapods-embed-flutter.svg)](http://badge.fury.io/rb/cocoapods-embed-flutter)
