@@ -20,7 +20,7 @@ env:
   RUBY_VER: 2.6
 
 concurrency: 
-  group: ${{ github.ref }}
+  group: ci/cd-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, [self-hosted, macOS]]
+        os: [ubuntu-latest, macos-latest]
     outputs:
       release: ${{ steps.check_version_bump.outputs.release_type != '' }}
 
