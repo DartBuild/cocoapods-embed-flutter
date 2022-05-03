@@ -1,81 +1,103 @@
+### [0.6.1](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.6.0...v0.6.1) (2022-05-03)
+
+
+### 🛠 Dependency
+
+* bump cocoapods-downloader from 1.5.1 to 1.6.3 ([#5](https://github.com/DartBuild/cocoapods-embed-flutter/issues/5)) ([8067f06](https://github.com/DartBuild/cocoapods-embed-flutter/commit/8067f062ab268fcc588e60c5cf54c3fe4da1d3e2))
+* bump nokogiri from 1.13.3 to 1.13.4 ([#7](https://github.com/DartBuild/cocoapods-embed-flutter/issues/7)) ([975638e](https://github.com/DartBuild/cocoapods-embed-flutter/commit/975638ecda2fc65f4141d1e0a37f08a775692984))
+
+
+### 💡 Continuous Integration
+
+* add codeql scanning ([3120c44](https://github.com/DartBuild/cocoapods-embed-flutter/commit/3120c446adf3bce9b80fe07a0d57ca79d7adfe7e))
+* **Deps:** bump @actions/core from 1.6.0 to 1.7.0 in /.github/config ([#8](https://github.com/DartBuild/cocoapods-embed-flutter/issues/8)) ([a3861ad](https://github.com/DartBuild/cocoapods-embed-flutter/commit/a3861ad7223c5d9a2021b15359d158a7c9ea2705))
+* **Deps:** bump semver from 7.3.5 to 7.3.7 in /.github/config ([#9](https://github.com/DartBuild/cocoapods-embed-flutter/issues/9)) ([36f2599](https://github.com/DartBuild/cocoapods-embed-flutter/commit/36f2599074c2a4e13bbd07680cc0cb208fe7ee97))
+* **Deps:** bump subosito/flutter-action from 2.3.0 to 2.4.0 ([#10](https://github.com/DartBuild/cocoapods-embed-flutter/issues/10)) ([2e6c1c1](https://github.com/DartBuild/cocoapods-embed-flutter/commit/2e6c1c108bc4dc44e25844d13fd0bb86639bba2e))
+* **Runners:** added self hosted macos runner ([3371c29](https://github.com/DartBuild/cocoapods-embed-flutter/commit/3371c294ea34f2fa123e4ebb6ae368311e5dfb8b))
+
+
+### 🐎 Performance Improvements
+
+* allow concurrent `flutter pub get` ([ef5bc8a](https://github.com/DartBuild/cocoapods-embed-flutter/commit/ef5bc8a7daa0eada810210e481f0be708182192c))
+
 ## [0.6.0](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.3...v0.6.0) (2022-03-27)
 
 
 ### 📚 Documentation
 
-* **README:** add pub.dev limitation ([8f955f3](https://github.com/DartBuild/cocoapods-embed-flutter/commit/8f955f36519b1e5eeac89ffebd660a5f84f9983b))
+* **README:** add pub.dev limitation ([f42de7c](https://github.com/DartBuild/cocoapods-embed-flutter/commit/f42de7c908d65661bb12e8becc6fc6941295d19a))
 
 
 ### 🛠 Dependency
 
-* bump cocoapods from 1.11.2 to 1.11.3 ([#4](https://github.com/DartBuild/cocoapods-embed-flutter/issues/4)) ([152737d](https://github.com/DartBuild/cocoapods-embed-flutter/commit/152737dd77852ef6937b5f458019e6535a426755))
+* bump cocoapods from 1.11.2 to 1.11.3 ([#4](https://github.com/DartBuild/cocoapods-embed-flutter/issues/4)) ([8cec1cb](https://github.com/DartBuild/cocoapods-embed-flutter/commit/8cec1cbe4c18dd20d155d5b1b8824ae7910a11c3))
 
 
 ### 💄 Styles
 
-* add vscode extensions recommendation ([4f021fb](https://github.com/DartBuild/cocoapods-embed-flutter/commit/4f021fbfa75dd58d1257c43ea3d19cb68b8a19e6))
+* add vscode extensions recommendation ([db4bdb5](https://github.com/DartBuild/cocoapods-embed-flutter/commit/db4bdb58765851cabfdf16254678301b149faceb))
 
 
 ### 🚀 Features
 
-* allow specifying different path for remote sources ([bc9c850](https://github.com/DartBuild/cocoapods-embed-flutter/commit/bc9c8509f90ef88248b56361794b6f8f1182a082))
+* allow specifying different path for remote sources ([56178ed](https://github.com/DartBuild/cocoapods-embed-flutter/commit/56178ed645a476e19b77377c246ce90de582b5ef))
 
 ### [0.5.3](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.2...v0.5.3) (2022-03-18)
 
 
 ### 📚 Documentation
 
-* **README:** add limitations ([9133edc](https://github.com/DartBuild/cocoapods-embed-flutter/commit/9133edc006973892b2e55ef13a30f6ae8e8b7ad4))
+* **README:** add limitations ([8830ead](https://github.com/DartBuild/cocoapods-embed-flutter/commit/8830eadfbb46ddbce83a2bf329bc04fa3cfe2583))
 
 ### [0.5.2](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.1...v0.5.2) (2022-03-12)
 
 
 ### 📚 Documentation
 
-* add helpful links and badges ([4ab6983](https://github.com/DartBuild/cocoapods-embed-flutter/commit/4ab69837d5057a0049e1533a00c6209556aec5b0))
+* add helpful links and badges ([8fb5253](https://github.com/DartBuild/cocoapods-embed-flutter/commit/8fb52531d66782525ae10a36bd7c1a5a062c02a4))
 
 
 ### 💡 Continuous Integration
 
-* **Deps:** bump actions/checkout from 2 to 3 ([#2](https://github.com/DartBuild/cocoapods-embed-flutter/issues/2)) ([3d1ca07](https://github.com/DartBuild/cocoapods-embed-flutter/commit/3d1ca0732a87e04561bc68ba1bbfc337173cd783))
-* **Deps:** bump actions/setup-node from 2 to 3 ([#3](https://github.com/DartBuild/cocoapods-embed-flutter/issues/3)) ([efd8f1a](https://github.com/DartBuild/cocoapods-embed-flutter/commit/efd8f1a82ce8ca6cd12adc1e5ca943a316a44b03))
+* **Deps:** bump actions/checkout from 2 to 3 ([#2](https://github.com/DartBuild/cocoapods-embed-flutter/issues/2)) ([7fddfd6](https://github.com/DartBuild/cocoapods-embed-flutter/commit/7fddfd663a74e6390cddcee979b211e55daf18bb))
+* **Deps:** bump actions/setup-node from 2 to 3 ([#3](https://github.com/DartBuild/cocoapods-embed-flutter/issues/3)) ([0af3476](https://github.com/DartBuild/cocoapods-embed-flutter/commit/0af34765e384d87fc257a9ddef2015faff393bad))
 
 ### [0.5.1](https://github.com/DartBuild/cocoapods-embed-flutter/compare/v0.5.0...v0.5.1) (2022-03-11)
 
 
 ### 📚 Documentation
 
-* add code documentation ([87c06fd](https://github.com/DartBuild/cocoapods-embed-flutter/commit/87c06fd45d3c63a94cda6ce3ae00a200f412bb2a))
+* add code documentation ([dd8d3da](https://github.com/DartBuild/cocoapods-embed-flutter/commit/dd8d3dafc3da6d68fa365d5580e89fc460cf9d94))
 
-## [0.5.0](https://github.com/DartBuild/cocoapods-embed-flutter/compare/3358c2b251f51154010990b95b7eaa741049d707...v0.5.0) (2022-03-11)
+## [0.5.0](https://github.com/DartBuild/cocoapods-embed-flutter/compare/1ad9f80188b2fa296933af35e6902ffcd6db001e...v0.5.0) (2022-03-11)
 
 
 ### 🚀 Features
 
-* add all remotes supported by `cocoapods-downloader` ([019d4c5](https://github.com/DartBuild/cocoapods-embed-flutter/commit/019d4c5298eaf52061fbcf6f264102419bc7e51e))
-* allow local flutter module to be declared dependency ([3358c2b](https://github.com/DartBuild/cocoapods-embed-flutter/commit/3358c2b251f51154010990b95b7eaa741049d707))
+* add all remotes supported by `cocoapods-downloader` ([e01ea82](https://github.com/DartBuild/cocoapods-embed-flutter/commit/e01ea8212d71b10a78390c187b5e8f351a09114b))
+* allow local flutter module to be declared dependency ([1ad9f80](https://github.com/DartBuild/cocoapods-embed-flutter/commit/1ad9f80188b2fa296933af35e6902ffcd6db001e))
 
 
 ### ✅ Tests
 
-* add app info tests ([2d3f341](https://github.com/DartBuild/cocoapods-embed-flutter/commit/2d3f341299344a16262952bd24306cff479ff74b))
+* add app info tests ([269cb54](https://github.com/DartBuild/cocoapods-embed-flutter/commit/269cb5439c2a6912346187b2612de6b38345b738))
 
 
 ### 💡 Continuous Integration
 
-* add dependabot config ([918b9e6](https://github.com/DartBuild/cocoapods-embed-flutter/commit/918b9e6c1680b91401184289c394f5ba93a80f43))
-* add flutter setup task ([2d7ff61](https://github.com/DartBuild/cocoapods-embed-flutter/commit/2d7ff61a1d71b4db4ca10f49a2e03738f9f711aa))
-* add publish to cocoapods repo task ([7e620f2](https://github.com/DartBuild/cocoapods-embed-flutter/commit/7e620f24a5b13b126221645b6ec61f5f55b75ea5))
-* fix bundle install on older macos ([f5e4843](https://github.com/DartBuild/cocoapods-embed-flutter/commit/f5e484334dfd2d40a132e627524505485a295195))
-* fix bundler error on linux ([0e3e4eb](https://github.com/DartBuild/cocoapods-embed-flutter/commit/0e3e4eb505f72564e9b271f0e999ac7af38686a3))
-* fix depandabot config spec violation ([aeaab36](https://github.com/DartBuild/cocoapods-embed-flutter/commit/aeaab365f3552848e86b25f2d6b26f79fabe86e0))
-* fix pod install ([508d695](https://github.com/DartBuild/cocoapods-embed-flutter/commit/508d6956313ec8f81f36adf9b1c95d5a4eebbbbb))
-* setup CI/CD pipeline ([c6fdfca](https://github.com/DartBuild/cocoapods-embed-flutter/commit/c6fdfcac64c7e57a4dc3d4ae2cb517bf745cb6b6))
-* setup flutter for ios ([9228bdb](https://github.com/DartBuild/cocoapods-embed-flutter/commit/9228bdbcf673a302d41089d1226d4caf54399265))
+* add dependabot config ([67099bd](https://github.com/DartBuild/cocoapods-embed-flutter/commit/67099bd490fbce0879e4aa6ddd93839847ff7e87))
+* add flutter setup task ([d5aeda3](https://github.com/DartBuild/cocoapods-embed-flutter/commit/d5aeda30817f81ed6ef2f1e9e21f8e2b8f415e20))
+* add publish to cocoapods repo task ([8bbac4d](https://github.com/DartBuild/cocoapods-embed-flutter/commit/8bbac4d24ed5a1e862a2531067aa8a62c5072849))
+* fix bundle install on older macos ([70522ea](https://github.com/DartBuild/cocoapods-embed-flutter/commit/70522eaa46a07c872e727c4f6c774d0444d516cc))
+* fix bundler error on linux ([a18435a](https://github.com/DartBuild/cocoapods-embed-flutter/commit/a18435a4efca56e62c70367b810fe1dc48cce5cf))
+* fix depandabot config spec violation ([7846c67](https://github.com/DartBuild/cocoapods-embed-flutter/commit/7846c67856a1ec7df92275ae887a80ba3413f4d8))
+* fix pod install ([61954c9](https://github.com/DartBuild/cocoapods-embed-flutter/commit/61954c912c6609a375920fccf8bbbf2d6aaa5e0e))
+* setup CI/CD pipeline ([3e20bc9](https://github.com/DartBuild/cocoapods-embed-flutter/commit/3e20bc9d41be80b3a95077e1c7df8e6f0f83d6b7))
+* setup flutter for ios ([d76deb2](https://github.com/DartBuild/cocoapods-embed-flutter/commit/d76deb220e3c0e60303b1b5676bbac24e7dc407f))
 
 
 ### 📚 Documentation
 
-* add code level documentation ([e064192](https://github.com/DartBuild/cocoapods-embed-flutter/commit/e0641922527a814c6635d31b93470367792db084))
-* **README:** add usage details ([8935bce](https://github.com/DartBuild/cocoapods-embed-flutter/commit/8935bce01387748e503b0d0f0b64a2573f557bce))
+* add code level documentation ([f3c04ed](https://github.com/DartBuild/cocoapods-embed-flutter/commit/f3c04ed6fddab8901511530014282006beb11e8f))
+* **README:** add usage details ([52852ae](https://github.com/DartBuild/cocoapods-embed-flutter/commit/52852aed76005285a8059bd1adb580a169d7463f))
 
