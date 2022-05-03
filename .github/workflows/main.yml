@@ -24,6 +24,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  analyze:
+    name: Analyze
+    if: github.event_name != 'workflow_dispatch'
+    uses: .github/workflows/codeql-analysis.yml
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
   ci:
     name: Run Tests
     runs-on: ${{ matrix.os }}
@@ -71,7 +80,7 @@ jobs:
   cd:
     name: Build and Publish
     if: (github.event_name == 'push' && needs.ci.outputs.release == 'true') || (github.event_name == 'workflow_dispatch' && github.event.inputs.release == 'true')
-    needs: ci
+    needs: [ci, analyze]
     runs-on: ubuntu-latest
 
     steps:

@@ -1,14 +1,7 @@
 name: "CodeQL"
 
 on:
-  push:
-    paths-ignore:
-      - '*.md'
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ main ]
-    paths-ignore:
-      - '*.md'
+  workflow_call:
   schedule:
     - cron: '0 0 * * *'
 
@@ -26,7 +19,6 @@ jobs:
       security-events: write
 
     strategy:
-      fail-fast: false
       matrix:
         language: [ 'javascript', 'ruby' ]
 
