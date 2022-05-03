@@ -27,10 +27,10 @@ module Flutter
       # @param [String, Hash] requirements
       #        the requirements for dependency as declred in `pubspec`
       #
-      # @param [Spec] parent_specification
+      # @param [Spec] parent_spec
       #        the parent specification where dependency declared
       #
-      # @param [Boolean] is_dev_dependency
+      # @param [Boolean] dev_dependency
       #        Whether the dependency only required during development
       #
       def initialize(name, requirements, parent_spec, dev_dependency = false)
@@ -48,10 +48,10 @@ module Flutter
       # @param    [Hash] hash declared in `dependencies` or `dev_dependencies`
       #           section in `pubspec.yaml` file
       #
-      # @param    [Spec] parent_specification
+      # @param    [Spec] parent_spec
       #           the parent specification where dependency declared
       #
-      # @param    [Boolean] is_dev_dependency
+      # @param    [Boolean] dev_dependency
       #           Whether the dependency only required during development
       #
       # @return   [Array<Dependency>] dependencies from hash declared in `dependencies`
@@ -74,14 +74,29 @@ module Flutter
         Spec.find(name, File.expand_path(path, File.dirname(parent_spec.defined_in_file)))
       end
 
-      # Install this dependency for the parent project.
+      # Concurrently install this dependency for the parent project.
       #
-      # @return [void]
+      # @return [Concurrent::Promises::Future, Nil]
+      #         {Nil} if not a local dependency, otherwise
+      #         returns future for {#spec}'s {Spec#pub_get pub_get} task.
       #
       def install
-        spec.setup if local?
+        spec.pub_get if local?
       end
 
+      # Allows accessing top level values in
+      # {https://dart.dev/tools/pub/dependencies dependency requirements},
+      # if {#requirements} type is {Hash}, i.e. path, git etc.
+      #
+      # @param    [Symbol] m
+      #           top level key value to access, i.e. path, git etc.
+      #
+      # @return depending on accessed value type in {#requirements}.
+      #
+      # @raise [NoMethodError] if no method or custom attribute exists by
+      #        the attribute name in {#requirements} or {#requirements}
+      #        is not a {Hash}.
+      #
       def method_missing(m, *args, &block)
         if requirements.is_a?(Hash) && requirements.include?(m.to_s)
           return requirements[m.to_s]

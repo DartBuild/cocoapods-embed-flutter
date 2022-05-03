@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'yaml'
   spec.add_runtime_dependency 'fileutils'
   spec.add_runtime_dependency 'cocoapods'
+  spec.add_runtime_dependency 'concurrent-ruby'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'

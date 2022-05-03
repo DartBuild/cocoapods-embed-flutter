@@ -112,7 +112,10 @@ module Pod
       #
       def pub(name = nil, *requirements)
         pubspec = Flutter::Pub::ExternalSources.fetchWithNameAndOptions(name, requirements)
-        pubspec.setup
+        Pod::UI.titled_section("Installing flutter dependencies for #{name}...",  :verbose_prefix => '-> ') do
+          future = pubspec.pub_get
+          future.value! if !future.nil?
+        end
         raise StandardError, "Invalid flutter module: '#{name}'." unless File.exists?(pubspec.pod_helper_path)
         install_flutter_pods_for_pubspec(pubspec)
       end

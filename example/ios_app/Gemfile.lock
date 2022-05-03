@@ -3,6 +3,7 @@ PATH
   specs:
     cocoapods-embed-flutter (0.6.0)
       cocoapods
+      concurrent-ruby
       fileutils
       yaml
 

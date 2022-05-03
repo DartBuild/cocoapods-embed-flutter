@@ -41,7 +41,7 @@ module Flutter
         if SOURCE_KEYS.keys.any? { |key| options.key?(key) }
           source = DownloaderSource.new(name, options, Pod::Config.instance.podfile_path)
           source.fetch(Pod::Config.instance.sandbox)
-          path = source.normalized_pupspec_path
+          path = source.normalized_pubspec_path
         elsif options.key?(:path)
           path = options[:path]
         else
@@ -137,7 +137,7 @@ module Flutter
         # @note   If the declared path is expanded only if the represents a path
         #         relative to the file system.
         #
-        def normalized_pupspec_path(declared_path)
+        def normalized_pubspec_path(declared_path)
           Spec.find_file(name, declared_path)
         end
 
@@ -147,7 +147,7 @@ module Flutter
         # @return [String] The uri of the pubspec appending the name of the file
         #         and expanding it if necessary.
         #
-        def normalized_pupspec_path
+        def normalized_pubspec_path
           search_path = params[:path].nil? ? target : File.expand_path(params[:path], target)
           Spec.find_file(name, search_path)
         end

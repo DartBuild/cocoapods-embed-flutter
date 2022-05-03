@@ -1,5 +1,8 @@
 require 'cocoapods-embed-flutter/flutter'
 require 'yaml'
+require 'open3'
+require 'concurrent'
+require 'cocoapods'
 
 module Flutter
   module Pub
@@ -43,7 +46,8 @@ module Flutter
 
         if File.basename(path) == Pub::SPEC_FILE
           return path
-        elsif Dir.exists?(File.expand_path(name, path)) && File.exists?(File.expand_path(Pub::SPEC_FILE, File.expand_path(name, path)))
+        elsif Dir.exists?(File.expand_path(name, path)) &&
+         File.exists?(File.expand_path(Pub::SPEC_FILE, File.expand_path(name, path)))
           return File.expand_path(Pub::SPEC_FILE, File.expand_path(name, path))
         elsif File.exists?(File.expand_path(Pub::SPEC_FILE, path))
           return File.expand_path(Pub::SPEC_FILE, path)
@@ -88,7 +92,7 @@ module Flutter
       end
 
       # @return [String] the path to the flutter project
-      # dependencies cache file.
+      #         dependencies cache file.
       #
       def package_cache_path
         File.join(project_path, Pub::TOOL_DIR, Pub::CACHE_FILE)
@@ -101,7 +105,7 @@ module Flutter
       end
 
       # @return [Array<Dependency>] the list of all the projects this
-      # specification depends upon and are included in app release.
+      #         specification depends upon and are included in app release.
       #
       def dependencies
         return [] unless @data.include?('dependencies')
@@ -123,37 +127,66 @@ module Flutter
         dependencies + dev_dependencies
       end
 
-      # @return [Boolean] If the flutter project for this specification
-      # has all its dependencies installed.
+      # Runs `flutter pub get` on project directory concurrently.
       #
-      def setup?
-        File.exists?(package_cache_path) && (!module? || File.exists?(pod_helper_path))
+      # @return [Concurrent::Promises::Future, Nil]
+      #         {Nil} if `pub get` running/completed, otherwise
+      #         runs `flutter pub get` task in background
+      #         and returns its future.
+      #
+      def pub_get
+        future = @@current_pubgets[self]
+        return nil if !future.nil?
+        future = Concurrent::Promises.future do
+          stdout, stderr, status = Open3.capture3('flutter pub get', :chdir => self.project_path)
+          :result
+        end
+        @@current_pubgets[self] = future
+        return Concurrent::Promises.zip(future, *all_dependencies.map(&:install).compact)
       end
 
-      # Sets up the project installing all specified dependencies.
+      # See if two {Spec} instances refer to the same pubspecs.
       #
-      # @return [void]
+      # @return [Boolean] whether or not the two {Spec} instances refer to the
+      #         same projects.
       #
-      def setup
-        return if setup?
-        pup_get
-        all_dependencies.each(&:install)
+      def ==(other)
+        self.class === other &&
+         other.defined_in_file == defined_in_file &&
+         other.instance_variable_get(:@data) == @data
       end
 
-      # Runs `flutter pub get` on project directory.
+      # @return [Fixnum] A hash identical for equals objects.
       #
-      # @return [void]
-      #
-      def pup_get
-        Dir.chdir(project_path) { |path| system('flutter pub get', exception: true) }
+      def hash
+        [defined_in_file, @data].hash
       end
 
+      alias eql? ==
+
+      # Allows accessing top level values in `pubspec.yaml`,
+      # i.e. name, description, version etc.
+      #
+      # @param    [Symbol] m
+      #           top level key value to access,
+      #           i.e. name, description etc.
+      #
+      # @return depending on accessed value type in `pubspec.yaml`.
+      #
+      # @raise [NoMethodError] if no method or custom attribute exists by
+      #        the attribute name in pubspec.
+      #
       def method_missing(m, *args, &block)
         if @data.include?(m.to_s)
           return @data[m.to_s]
         end
         super.method_missing(m, *args, &block)
       end
+
+      private
+
+      # A hash containing all `pub get` promises.
+      @@current_pubgets = {}
     end
   end
 end

@@ -3,6 +3,9 @@ require 'fileutils'
 
 module Flutter
   module Pub
+    # The Downloader modules name-spaces all the classes and methods
+    # for downloading and caching remote Flutter projects.
+    #
     module Downloader
       # Downloads a package from the given `request` to the given `target` location.
       #

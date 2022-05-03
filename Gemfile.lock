@@ -3,6 +3,7 @@ PATH
   specs:
     cocoapods-embed-flutter (0.6.0)
       cocoapods
+      concurrent-ruby
       fileutils
       yaml
 
@@ -214,9 +215,7 @@ PLATFORMS
 DEPENDENCIES
   bacon
   bundler
-  cocoapods
   cocoapods-embed-flutter!
-  cocoapods-plugins
   github_api
   mocha
   mocha-on-bacon
