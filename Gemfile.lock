@@ -121,7 +121,7 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     minitest (5.15.0)
-    mocha (1.13.0)
+    mocha (1.14.0)
     mocha-on-bacon (0.2.3)
       mocha (>= 0.13.0)
     molinillo (0.8.0)
