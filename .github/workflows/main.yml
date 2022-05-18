@@ -115,7 +115,7 @@ jobs:
         github-token: ${{ github.token }}
         git-message: 'chore(CHANGELOG): update for {version}'
         git-user-name: ${{ github.actor }}
-        git-user-email: devsoumyamahunt@gmail.com
+        git-user-email: soumya.mahunt@gmail.com
         skip-version-file: true
         release-count: 0
         pre-changelog-generation: '.github/config/pre_changelog_hook.js'

@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": {
     "name": "Soumya Ranjan Mahunt",
-    "email": "devsoumyamahunt@gmail.com"
+    "email": "soumya.mahunt@gmail.com"
   },
   "dependencies": {
     "@actions/core": "1.7.0",

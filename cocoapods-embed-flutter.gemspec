@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = repo_url
   spec.license       = 'MIT'
   spec.authors       = ['Soumya Ranjan Mahunt']
-  spec.email         = ['devsoumyamahunt@gmail.com']
+  spec.email         = ['soumya.mahunt@gmail.com']
   spec.summary       = %q{Embed flutter modules in iOS projects.}
   spec.description   = <<-EOF
     Straight forward way of declaring flutter modules as dependency for targets,
