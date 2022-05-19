@@ -35,10 +35,7 @@ jobs:
 
   ci:
     name: Run Tests
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
+    runs-on: macos-latest
     outputs:
       release: ${{ steps.check_version_bump.outputs.release_type != '' }}
 
