@@ -13,13 +13,13 @@ on:
     inputs:
       release:
         description: Create release
-        required: false 
+        required: false
         type: boolean
 
 env:
   RUBY_VER: 2.6
 
-concurrency: 
+concurrency:
   group: ci/cd-${{ github.ref }}
   cancel-in-progress: true
 

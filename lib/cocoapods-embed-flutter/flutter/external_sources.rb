@@ -54,8 +54,8 @@ module Flutter
       # Provides support for fetching a specification file from a source handled
       # by the downloader. Supports all the options of the downloader
       #
-      # @note The pubspec must be in the root of the repository 
-      #       or in directory with the name provided 
+      # @note The pubspec must be in the root of the repository
+      #       or in directory with the name provided
       #
       class DownloaderSource
         # @return [String] the name of the Package described by this external source.
