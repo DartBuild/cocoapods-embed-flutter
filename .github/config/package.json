@@ -9,7 +9,7 @@
     "email": "soumya.mahunt@gmail.com"
   },
   "dependencies": {
-    "@actions/core": "1.7.0",
+    "@actions/core": "1.8.2",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "semver": "^7.3.7"
   }
