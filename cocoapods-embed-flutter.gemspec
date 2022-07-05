@@ -4,8 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cocoapods-embed-flutter/gem_version.rb'
 
 Gem::Specification.new do |spec|
-  repo = 'DartBuild/cocoapods-embed-flutter'
-  repo_url = "https://github.com/#{repo}"
+  repo     = 'DartBuild/cocoapods-embed-flutter'
+  github   = 'https://github.com'
+  repo_url = "#{github}/#{repo}"
+  doc_url  = 'https://www.rubydoc.info/gems/cocoapods-embed-flutter'
 
   spec.name          = 'cocoapods-embed-flutter'
   spec.version       = CocoapodsEmbedFlutter::VERSION
@@ -35,8 +37,10 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.6'
   spec.metadata = {
     'bug_tracker_uri'   => "#{repo_url}/issues",
-    'changelog_uri'     => "#{repo_url}/blob/main/CHANGELOG.md",
-    'source_code_uri'   => repo_url,
-    'github_repo'       => "git@github.com:#{repo}.git"
+    'changelog_uri'     => "#{repo_url}/blob/v#{spec.version}/CHANGELOG.md",
+    'documentation_uri' => "#{doc_url}/#{spec.version}",
+    'source_code_uri'   => "#{repo_url}/tree/v#{spec.version}",
+    'github_repo'       => "git@github.com:#{repo}.git",
+    'funding_uri'       => "#{github}/sponsors/soumyamahunt"
   }
 end
