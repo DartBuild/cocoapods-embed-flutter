@@ -203,7 +203,7 @@ GEM
       colored2 (~> 3.1)
       nanaimo (~> 0.3.0)
       rexml (~> 3.2.4)
-    yaml (0.2.0)
+    yaml (0.2.1)
     yard (0.9.28)
       webrick (~> 1.7.0)
     zeitwerk (2.5.4)
