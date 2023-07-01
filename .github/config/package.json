@@ -11,6 +11,6 @@
   "dependencies": {
     "@actions/core": "1.10.0",
     "conventional-changelog-conventionalcommits": "^5.0.0",
-    "semver": "^7.5.0"
+    "semver": "^7.5.3"
   }
 }
